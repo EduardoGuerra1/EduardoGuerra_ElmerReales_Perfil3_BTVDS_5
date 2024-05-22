@@ -1,9 +1,14 @@
+// Importamos los componentos necesarios de react-native
 import { View, Text, StyleSheet, Dimensions, Image, FlatList } from 'react-native'
 import React from 'react'
 
+// Definimos el componente InfoCard que recibe 'info' como propiedad
 const InfoCard =  ({info}) =>{
 
+// Desestructuramos 'info' para obtener 'image', 'name' y 'code'
 const {image, name, code} = info;
+
+    // Retornamos el JSX que define cómo se verá el componente en la pantalla
     return(
         <View style={styles.container}>
         <View style={styles.cardContainer}>
@@ -17,10 +22,13 @@ const {image, name, code} = info;
     )
 }
 
+// Obtenemos el ancho del dispositivo
 const deviceWidth = Math.round(Dimensions.get('window').width)
 
+// Definimos un offset
 const offset = 40;
 
+// Definimos los estilos que se usarán en el componente
 const styles = StyleSheet.create({
     container: {
         width: deviceWidth - 30,
@@ -29,9 +37,9 @@ const styles = StyleSheet.create({
         marginBottom:25
       },
     cardContainer: {
-        width: deviceWidth - offset,
+        width: '100%',
+        minHeight: 230, // Cambiamos 'height' a 'minHeight'
         backgroundColor: '#F6FFF8',
-        height: 230,
         borderRadius: 25,
         shadowColor: '#000',
         shadowOffset: { width: 2, height: 8 },
@@ -43,11 +51,15 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 18,
         fontWeight: '200',
+        flexWrap: 'wrap',
     },
     cardCode: {
+        
         color: 'black',
         fontSize: 18,
         fontWeight: '300',
+        flexWrap: 'wrap'
+        
     },
     imageStyle:{
         height: 150,
@@ -63,4 +75,5 @@ const styles = StyleSheet.create({
     }
 })
 
+// Exportamos el componente para que pueda ser usado en otros lugares de la aplicación
 export default InfoCard;
